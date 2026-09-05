@@ -1,10 +1,11 @@
 {
-  "name": "Japan 2026 – תמי, דני, דרורית וריצ׳י",
+  "name": "Japan 2026 – Four Friends",
   "short_name": "Japan 2026",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f6f4ef",
-  "theme_color": "#176b63",
+  "background_color": "#f7f4ed",
+  "theme_color": "#0d6f68",
   "lang": "he",
   "dir": "rtl",
   "icons": [
@@ -14,6 +15,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "scope": "./"
+  ]
 }
