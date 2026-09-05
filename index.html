@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>סיאול + יפן 2026</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#17202a;--muted:#65717c;--line:#e5e1d8;--accent:#176b63;--warn:#a34712}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;z-index:10;background:rgba(246,244,239,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 16px}
+header h1{margin:0;font-size:22px} header p{margin:4px 0 0;color:var(--muted);font-size:13px}
+main{max-width:980px;margin:auto;padding:16px 16px 90px}
+.tabs{display:flex;gap:8px;overflow:auto;padding:8px 0 14px;position:sticky;top:73px;background:var(--bg);z-index:9}
+button{font:inherit} .tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-weight:700}
+.tab.active{background:var(--accent);color:white;border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 5px 20px rgba(0,0,0,.04)}
+.card h3{margin:0 0 6px;font-size:18px} .date{font-weight:800;color:var(--accent)} .muted{color:var(--muted);font-size:13px}
+.pill{display:inline-block;border-radius:999px;padding:5px 9px;background:#eef6f4;color:var(--accent);font-size:12px;font-weight:800;margin:2px}
+.row{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)} .row b{display:block;margin-bottom:4px}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px} .actions a{text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:8px 10px;color:var(--ink);background:#fff;font-weight:700;font-size:13px}
+.alert{background:#fff4e8;border-color:#f0d1ae} .danger{color:#9d2e22;font-weight:800} .done{color:#176b63;font-weight:800}
+.task{display:flex;gap:10px;align-items:flex-start} .task input{margin-top:4px;transform:scale(1.2)}
+.search{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:16px;background:#fff;margin-bottom:12px}
+.section-title{font-size:21px;margin:8px 0 12px} .hidden{display:none!important}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:8px 10px;display:flex;justify-content:space-around;z-index:20}
+.bottom button{border:0;background:transparent;font-weight:800;font-size:11px;color:var(--muted);padding:5px 7px;min-width:58px} .bottom button.active{color:var(--accent)}
+@media(max-width:600px){header h1{font-size:19px} .tabs{top:69px}}
+</style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#176b63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Japan 2026">
+<link rel="apple-touch-icon" href="japan_2026_logo.png">
+
+
+<style>
+#pinGate{
+  position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#f6f4ef,#e8efe9);
+  display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit
+}
+#pinCard{
+  width:min(92vw,420px);background:#fff;border-radius:22px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.18);text-align:center
+}
+#pinCard img{width:110px;height:110px;object-fit:contain;border-radius:50%;margin-bottom:12px}
+#pinCard h2{margin:6px 0 8px;font-size:24px}
+#pinCard p{margin:0 0 16px;color:#666}
+#pinInput{width:100%;box-sizing:border-box;padding:14px;border:1px solid #ccc;border-radius:12px;font-size:22px;text-align:center;letter-spacing:4px}
+#pinSubmit{width:100%;margin-top:12px;padding:13px;border:0;border-radius:12px;background:#176b63;color:#fff;font-weight:800;font-size:17px}
+#pinError{min-height:20px;margin-top:10px;color:#b42318;font-weight:700}
+</style>
+
+</head>
+<body>
+
+<div id="pinGate">
+  <div id="pinCard">
+    <img src="japan_2026_logo.png" alt="Japan 2026">
+    <h2>Japan 2026</h2>
+    <p>הזן קוד כניסה</p>
+    <input id="pinInput" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••">
+    <button id="pinSubmit">כניסה לאפליקציה</button>
+    <div id="pinError"></div>
+  </div>
+</div>
+
+<header><div style="display:flex;align-items:center;gap:12px"><img src="japan_2026_logo.png" alt="Japan 2026 logo" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--line)"><div><h1>סיאול + יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11 · מצב: טיול כמעט סגור</p></div></div></header>
+<div style="max-width:980px;margin:0 auto;padding:0 16px 8px">
+  <button id="installAppBtn" style="display:none;width:100%;border:0;border-radius:14px;padding:11px 14px;background:#176b63;color:white;font-weight:800;font-size:15px">
+    📲 הוסף למסך הבית
+  </button>
+</div>
+
+<main>
+<div class="tabs" id="dayTabs"></div>
+<section id="daysView">
+<input class="search" id="search" placeholder="חיפוש יום, מקום או פעילות…">
+<div id="dayGrid" class="grid"></div>
+</section>
+<section id="tasksView" class="hidden">
+<h2 class="section-title">NEXT ACTION</h2><div id="tasksGrid" class="grid"></div>
+</section>
+<section id="foodView" class="hidden">
+<h2 class="section-title">🍽️ אוכל — מתאים לכל הארבעה</h2>
+<p class="muted">כלל קבוע: מסעדת סושי טהורה אינה Plan A. לתמי חייבת להיות ארוחה מלאה ללא סושי.</p>
+<div id="foodGrid" class="grid"></div>
+</section>
+<section id="carView" class="hidden">
+<h2 class="section-title">🚗 הרכב שלנו</h2>
+<div class="card"><h3>Toyota W3 Class</h3><div class="muted">Alphard / Vellfire or similar</div>
+<div class="row"><b>מידות עבודה שמרניות</b>4.95 × 1.85 × 1.94 מ׳</div>
+<div class="row"><b>איסוף</b>8.11 · 10:00 · Toyota Haneda</div>
+<div class="row"><b>החזרה</b>15.11 · יעד תפעולי סביב 18:00 · Sanjo Keihan-Kita</div>
+<div class="row"><b>כלל חניה</b>בחניון מכני עם תקרת 2.00 מ׳ — לא נכנסים לפני אישור הצוות.</div>
+<div class="row"><b>באיסוף</b>ETC Card · סוג דלק · צילום 360° · ניווט · מידות הרכב בפועל.</div></div>
+</section>
+
+
+<section id="reservationsView" class="hidden">
+<h2 class="section-title">🎫 אישורים והזמנות</h2>
+<p class="muted">המסמכים מחולקים לשלוש תיקיות: לכל זוג תיקייה פרטית, ועוד תיקייה משותפת לכל ארבעת המטיילים.</p>
+
+<div class="card">
+  <h3>👫 תמי ודני</h3>
+  <div class="row"><b>מה יישמר כאן</b>כרטיסי טיסה/אישורים אישיים, אישורי מלונות הרשומים על שמכם, מסמכים אישיים והזמנות ששייכות רק לזוג.</div>
+  <div class="row"><b>סטטוס</b>🟡 ממתין לאישורי המלונות של תמי ודני.</div>
+  <div class="actions">
+    <a href="אישורים/תמי_ודני/" target="_blank">📁 פתח תיקיית תמי ודני</a>
+  </div>
+</div>
+
+<div class="card">
+  <h3>👫 דרורית וריצ׳י — אישורי מלונות ✅</h3>
+  <div class="row"><b>1–4.11 · סיאול</b>Aloft by Marriott Seoul Myeongdong
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/סיאול 1-4.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>4–8.11 · טוקיו</b>Mitsui Garden Hotel Ginza-gochome
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/טוקיו 4-8.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>8–10.11 · האקונה</b>Hakone Ashinoko Hanaori
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/האקונה 8-10.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>10–11.11 · מאצומוטו</b>Onyado Nono Matsumoto Natural Hot Spring
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/מאצאמוטו 10.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>11–13.11 · טאקיאמה</b>Hida Takayama Onsen Takayama Green Hotel
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/טאקאימה 11-13.26.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>13–15.11 · קאנאזאווה</b>Onyado Nono Kanazawa
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/קאנאזאווה13-15.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>15–19.11 · קיוטו</b>GOOD NATURE HOTEL KYOTO
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/קיוטו.2. 15-19.11.26.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>19–21.11 · הירושימה</b>THE KNOT HIROSHIMA
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/הירושימה 19-21.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+  <div class="row"><b>21–23.11 · אוסקה</b>The Royal Park Hotel Iconic Osaka Midosuji
+    <div class="actions"><a href="אישורים/דרורית_וריצי/מלונות/אוסקה 21-23.11.pdf" target="_blank">📄 פתח אישור</a></div></div>
+
+  <div class="row"><b>✈️ כרטיסי טיסה — דרורית וריצ׳י ✅</b>
+    <div class="muted">Emirates / Flydubai: תל אביב → דובאי → סיאול, וחזרה אוסקה → דובאי → תל אביב. ANA: סיאול → טוקיו.</div>
+  </div>
+  <div class="row"><b>דרורית — Emirates</b>
+    <div class="actions"><a href="אישורים/דרורית_וריצי/טיסות/כרטיס טיסה.תא-סיאול.אוסקה-תא. דרורית.pdf" target="_blank">📄 פתח כרטיס Emirates</a></div>
+  </div>
+  <div class="row"><b>דרורית — ANA סיאול→טוקיו</b>
+    <div class="actions"><a href="אישורים/דרורית_וריצי/טיסות/כרטיס טיסה.סיאול-טוקיו. דרורית.pdf" target="_blank">📄 פתח כרטיס ANA</a></div>
+  </div>
+  <div class="row"><b>ריצ׳י — Emirates</b>
+    <div class="actions"><a href="אישורים/דרורית_וריצי/טיסות/כרטיס טיסה.תא-סיאול. אוסקה-תא. ריצי.pdf" target="_blank">📄 פתח כרטיס Emirates</a></div>
+  </div>
+  <div class="row"><b>ריצ׳י — ANA סיאול→טוקיו</b>
+    <div class="actions"><a href="אישורים/דרורית_וריצי/טיסות/כרטיס טיסה.סיאול-טוקיו.ריצי.pdf" target="_blank">📄 פתח כרטיס ANA</a></div>
+  </div>
+  <div class="row"><b>פרטי מושבים</b>
+    Emirates הלוך DXB→ICN: ריצ׳י 15B, דרורית 15D · חזור KIX→DXB: ריצ׳י 12B, דרורית 12D. ANA GMP→HND: ריצ׳י 22A, דרורית 22C.
+  </div>
+</div>
+
+<div class="card">
+  <h3>👥 משותף — כל הארבעה</h3>
+  <div class="row"><b>ייכנסו לכאן</b>הזמנת הרכב, מסעדות, סיורים, מדריכים, רכבות, Yamato, הסעות משותפות, מסמכי מסלול וכל הזמנה קבוצתית.</div>
+  <div class="row"><b>✈️ תוכנית הטיסות המשותפת</b>כל 5 מקטעי הטיסה + תנאי הכרטיס והטבות.</div>
+  <div class="actions">
+    <a href="אישורים/משותף/JAPAN_2026_flights.pdf" target="_blank">📄 פתח תוכנית טיסות</a>
+  </div>
+  <div class="row"><b>🚗 Toyota W3</b>איסוף 8.11 ב-10:00 · החזרה 15.11 · Full Package.</div>
+  <div class="actions">
+    <a href="אישורים/משותף/Japan_2026_car_reservation.pdf" target="_blank">📄 פתח הזמנת רכב</a>
+  </div>
+  <div class="row"><b>🍽️ מסעדות</b>GYU-SUKE, Matsusakagyu Yakiniku M והזמנות נוספות יתווספו לכאן לאחר אישור.</div>
+  <div class="row"><b>👩‍🏫 סיורים</b>סיור טוקיו 5.11 + סיון בקיוטו 16.11.</div>
+  <div class="row"><b>🚅 תחבורה משותפת</b>Shinkansen Kyoto→Hiroshima, Yamato, Chauffeur-drive והסעה לנתב״ג.</div>
+</div>
+
+<div class="card">
+  <h3>📋 כללי מיון קבועים</h3>
+  <div class="row"><b>אישי לזוג</b>טיסה/מלון/מסמך שהונפק על שם זוג מסוים → לתיקייה של אותו זוג.</div>
+  <div class="row"><b>משותף</b>רכב, מסעדה, סיור, רכבת, משלוח מזוודות, הסעה או מסמך שמשמש את ארבעתכם → לתיקיית "משותף".</div>
+  <div class="row"><b>כפילות</b>אם אותו אישור רלוונטי גם אישית וגם לקבוצה, המקור נשמר בתיקייה המתאימה ובאפליקציה יוצג קישור אחד ברור.</div>
+</div>
+</section>
+
+
+</main>
+<nav class="bottom">
+<button data-view="daysView" class="active">📅 ימים</button>
+<button data-view="reservationsView">🎫 הזמנות</button>
+<button data-view="tasksView">✅ משימות</button>
+<button data-view="foodView">🍽️ אוכל</button>
+<button data-view="carView">🚗 רכב</button>
+</nav>
+<script>
+const days=[{"date": "31.10", "city": "יציאה מישראל", "title": "נתב״ג + טיסה", "plan": "יציאה מהבית עד 13:30, הגעה לנתב״ג סביב 15:10, טיסה 18:10 לדובאי.", "important": "לא לאחר את שעת היציאה מהבית.", "transport": "ואן/מונית גדולה ל-4 + מזוודות", "planb": "להקדים במקרה של עומסי תנועה."}, {"date": "1.11", "city": "סיאול", "title": "נחיתה והתאקלמות", "plan": "נחיתה ב-ICN 16:50, מעבר ל-Aloft Myeongdong, ערב קל במיונגדונג אם יש כוח.", "important": "לבדוק Emirates Chauffeur-drive; אחרת ואן גדול.", "transport": "Chauffeur-drive / ואן", "planb": "מלון בלבד אם עייפים."}, {"date": "2.11", "city": "סיאול", "title": "סיאול המסורתית", "plan": "Gyeongbokgung → Bukchon Hanok Village → Insadong → Ikseondong.", "important": "Gyeongbokgung פתוח ביום הזה; נווט בסיאול עם Naver Map.", "transport": "מטרו + הליכה", "planb": "לקצר את Bukchon או את הערב."}, {"date": "3.11", "city": "סיאול", "title": "שוק + Gangnam", "plan": "Gwangjang Market → DDP (אופציונלי) → COEX / Starfield Library → Bongeunsa → Myeongdong.", "important": "DDP הוא הראשון שיורד אם היום מתארך.", "transport": "מטרו + הליכה", "planb": "COEX + Bongeunsa בלבד."}, {"date": "4.11", "city": "טוקיו", "title": "סיאול → טוקיו", "plan": "ANA GMP 12:25 → HND 14:25, מעבר למלון בגינזה, ערב רגוע.", "important": "לא לתכנן אטרקציה משמעותית בערב.", "transport": "מונית גדולה לשדות", "planb": "ארוחה ליד המלון בלבד."}, {"date": "5.11", "city": "טוקיו", "title": "סיור מודרך — מערב טוקיו", "plan": "10:00 מהמלון: Meiji Jingu → Harajuku / Takeshita → Omotesando → Odaiba → Shibuya.", "important": "יום מודרך של כ-6 שעות; לא להוסיף אטרקציה.", "transport": "עם המדריך", "planb": "המדריך יקצר לפי הקצב."}, {"date": "6.11", "city": "טוקיו", "title": "טוקיו המזרחית", "plan": "Asakusa → Senso-ji → Nakamise → Ueno / Ameyoko → Akihabara.", "important": "יום משלים ללא כפילות ל-5.11.", "transport": "מטרו + הליכה", "planb": "Akihabara יורדת ראשונה."}, {"date": "7.11", "city": "טוקיו", "title": "Tsukiji + Ginza", "plan": "Tsukiji Outer Market → Ginza → זמן חופשי וקניות.", "important": "יום קל לפני תחילת קטע הרכב.", "transport": "מטרו + הליכה", "planb": "Ginza בלבד אם גשום/עייפים."}, {"date": "8.11", "city": "האקונה", "title": "איסוף רכב → האקונה", "plan": "08:45 צ׳ק-אאוט, 09:00 מונית ל-Toyota Haneda, איסוף W3 ב-10:00, נסיעה להאקונה.", "important": "לבקש ETC Card, לאמת דלק, לצלם את הרכב ואת המידות בפועל.", "transport": "Toyota W3", "planb": "Saiko יורדת אם יש עיכוב."}, {"date": "9.11", "city": "האקונה", "title": "Hakone Loop", "plan": "Lake Ashi + Ropeway + אזור Hakone בקצב רגוע; אונסן בערב.", "important": "לא לרדוף אחרי Fuji אם אין ראות.", "transport": "רכב + רכבל/שיט", "planb": "Lake Ashi + Shrine + אונסן."}, {"date": "10.11", "city": "מאצומוטו", "title": "Hakone → Matsumoto", "plan": "יציאה 08:15–08:30; Matsumoto Castle כ-Plan A, אחר כך Nakamachi / Nawate.", "important": "הטירה פתוחה 08:30–17:00, כניסה אחרונה 16:30.", "transport": "רכב", "planb": "אם מאחרים — הטירה עוברת ל-11.11 בבוקר."}, {"date": "11.11", "city": "טאקיאמה", "title": "Matsumoto → Takayama", "plan": "אם הטירה בוצעה: Daio Wasabi Farm; אם לא: Matsumoto Castle. אחר כך נסיעה לטאקיאמה.", "important": "לא לעשות גם מוזיאון וגם חוות וואסבי.", "transport": "רכב", "planb": "במקרה של עיכוב — ישר Takayama."}, {"date": "12.11", "city": "טאקיאמה", "title": "יום עיר רגוע", "plan": "שוק בוקר → Old Town / Sanmachi → Takayama Jinya → ערב Hida Beef.", "important": "GYU-SUKE — להזמין מראש ל-4, סביב 19:00.", "transport": "רכב נשאר בחניה", "planb": "יום פנימי יותר אם גשום."}, {"date": "13.11", "city": "קאנאזאווה", "title": "Takayama → Shirakawa-go → Kanazawa", "plan": "יציאה 08:30, Shirakawa-go סביב 09:30–12:00, צהריים קל, הגעה לקאנאזאווה סביב 14:00.", "important": "Shirakawa-go הוא Plan A; לבדוק חניה סמוך למועד.", "transport": "רכב", "planb": "ישירות Kanazawa במזג אוויר קשה."}, {"date": "14.11", "city": "קאנאזאווה", "title": "קאנאזאווה", "plan": "Kenrokuen → Castle area → Nagamachi → Omicho → Higashi Chaya.", "important": "אין צורך להזיז את הרכב.", "transport": "הליכה / אוטובוס / מונית", "planb": "Higashi Chaya הראשונה לקיצור."}, {"date": "15.11", "city": "קיוטו", "title": "Kanazawa → Tōjinbō → Hikone → Kyoto", "plan": "יציאה 08:15–08:30; Tōjinbō → Hikone → GOOD NATURE. תמי ודרורית עם המזוודות למלון; דני וריצ׳י לתדלוק + Toyota.", "important": "לכוון להחזרת Toyota סביב 18:00; 20:00 רק גבול עליון.", "transport": "רכב, אחר כך מונית", "planb": "בלי Tōjinbō; ואם צריך — ישירות Kyoto."}, {"date": "16.11", "city": "קיוטו", "title": "סיור מודרך עם סיון", "plan": "10:00 מהמלון: Ginkaku-ji → Kiyomizudera → Ninenzaka/Sannenzaka → השווקים העתיקים → Gion → Fushimi Inari.", "important": "Sivan Izawa Levy, +81 80-9606-9182, misticalica@gmail.com", "transport": "עם המדריכה", "planb": "סיון תקצר לפי עומסים וקצב."}, {"date": "17.11", "city": "קיוטו", "title": "Arashiyama מוקדם", "plan": "יציאה 07:15–07:30 → Bamboo Grove → Tenryu-ji → הנהר → Kinkaku-ji → Ryoan-ji אם יש כוח.", "important": "להגיע מוקדם לפני עומסי השלכת.", "transport": "רכבת / מונית", "planb": "Ryoan-ji יורד ראשון."}, {"date": "18.11", "city": "קיוטו", "title": "Nanzen-ji + Eikando", "plan": "יום רגוע: Nanzen-ji → Eikando → זמן חופשי. אופציית ערב: Tō-ji illumination.", "important": "Eikando 2026: 09:00–16:00 רישום, שערים נסגרים 17:00.", "transport": "הליכה / מונית", "planb": "לוותר על ערב Tō-ji אם עייפים."}, {"date": "19.11", "city": "הירושימה", "title": "Yamato + Shinkansen", "plan": "שליחת המזוודות הגדולות מ-GOOD NATURE ל-Royal Park Osaka; Shinkansen סביב 10:00–10:30; Peace Park / Dome / Museum.", "important": "לצלם תוויות ומספרי מעקב; לצאת עם תיק ליומיים בלבד.", "transport": "מונית + Shinkansen", "planb": "אם יש עיכוב — Museum + Dome בעדיפות."}, {"date": "20.11", "city": "מיאג׳ימה", "title": "Miyajima", "plan": "Itsukushima Shrine + הרחוב המרכזי + Mt. Misen אם מזג האוויר טוב.", "important": "לבדוק גאות ושפל שבוע לפני.", "transport": "רכבת/חשמלית + מעבורת", "planb": "בלי Mt. Misen."}, {"date": "21.11", "city": "אוסקה", "title": "Hiroshima → Osaka", "plan": "Shinkansen לאוסקה, בדיקת המזוודות במלון, Namba / Dotonbori בערב.", "important": "Matsusakagyu Yakiniku M — להזמין מראש.", "transport": "Shinkansen + מונית קצרה", "planb": "Dotonbori בלבד אם מגיעים מאוחר."}, {"date": "22.11", "city": "אוסקה", "title": "Osaka", "plan": "Osaka Castle → Kuromon Market → Namba / Dotonbori.", "important": "יום גמיש; לא חייבים להספיק הכול.", "transport": "מטרו + הליכה", "planb": "הטירה יורדת אם עייפים."}, {"date": "23.11", "city": "אוסקה / KIX", "title": "יום אחרון + טיסה", "plan": "יום רגוע, איסוף מזוודות, ארוחה מוקדמת, יציאה ל-KIX סביב 18:15–18:30, טיסה 23:10.", "important": "Plan A: Emirates Chauffeur-drive; Plan B: ואן גדול.", "transport": "Chauffeur-drive / ואן", "planb": "להקדים יציאה אם יש עומסי תנועה."}, {"date": "24.11", "city": "ישראל", "title": "חזרה", "plan": "קונקשן בדובאי וטיסה לישראל; נחיתה 09:10.", "important": "סיום הטיול.", "transport": "טיסה", "planb": "—"}], tasks=[["עכשיו", "להזמין GYU-SUKE ל-12.11, 4 אנשים סביב 19:00", "🔴"], ["עכשיו", "להזמין Matsusakagyu Yakiniku M ל-21.11", "🔴"], ["עכשיו", "להזמין ואן/מונית לנתב״ג ל-31.10", "🔴"], ["אוקטובר", "להזמין Shinkansen Kyoto → Hiroshima ל-19.11", "🟡"], ["אוקטובר", "לתאם Yamato GOOD NATURE → Royal Park Osaka", "🟡"], ["אוקטובר", "להזמין Emirates Chauffeur-drive ל-KIX אם זמין", "🟡"], ["אוקטובר", "Visit Japan Web + eSIM + בדיקת דרישות קוריאה", "🟡"], ["שבוע לפני", "בדיקת מזג אוויר, כבישים, שלכת, גאות/שפל", "🟡"]], restaurants=[["12.11", "Takayama", "GYU-SUKE", "Hida Beef", "✅", "להזמין מראש; לבקש חלופה למנת Hida Beef sushi לתמי"], ["17/18.11", "Kyoto", "Tempura / Japanese dining", "טמפורה / Wagyu / מנות חמות", "✅", "לבחור מקום אחד להזמנה"], ["21.11", "Osaka", "Matsusakagyu Yakiniku M", "Matsusaka Beef Yakiniku", "✅", "להזמין מראש"], ["13/14.11", "Kanazawa", "Maimon-style restaurant", "סושי + תפריט חם רחב", "✅/🟡", "רק אם יש לתמי ארוחה מלאה ללא סושי"]];
+const tabs=document.getElementById('dayTabs'), grid=document.getElementById('dayGrid');
+function mapLink(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
+function render(filter=''){
+  grid.innerHTML='';
+  days.filter(d=>(d.date+d.city+d.title+d.plan).toLowerCase().includes(filter.toLowerCase())).forEach((d,i)=>{
+    const c=document.createElement('article'); c.className='card';
+    c.innerHTML=`<div class="date">${d.date} · ${d.city}</div><h3>${d.title}</h3>
+    <div class="row"><b>🕒 היום</b>${d.plan}</div>
+    <div class="row"><b>⚠️ חשוב</b>${d.important}</div>
+    <div class="row"><b>🚆/🚗 תחבורה</b>${d.transport}</div>
+    <div class="row"><b>🔄 Plan B</b>${d.planb}</div>
+    <div class="actions"><a href="${mapLink(d.city)}" target="_blank">📍 מפה</a></div>`;
+    grid.appendChild(c);
+  });
+}
+days.forEach((d,i)=>{const b=document.createElement('button');b.className='tab';b.textContent=d.date;b.onclick=()=>{document.getElementById('search').value=d.date;render(d.date)};tabs.appendChild(b)});
+render();
+document.getElementById('search').oninput=e=>render(e.target.value);
+
+const tg=document.getElementById('tasksGrid');
+tasks.forEach((t,i)=>{const c=document.createElement('div');c.className='card task';c.innerHTML=`<input type="checkbox" id="t${i}"><label for="t${i}"><b>${t[2]} ${t[0]}</b><div>${t[1]}</div></label>`;tg.appendChild(c)});
+const fg=document.getElementById('foodGrid');
+restaurants.forEach(r=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class="date">${r[0]} · ${r[1]}</div><h3>${r[2]}</h3><div class="row"><b>סגנון</b>${r[3]}</div><div class="row"><b>🍱 מתאים לתמי?</b>${r[4]}</div><div class="row"><b>הערה</b>${r[5]}</div>`;fg.appendChild(c)});
+document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>{document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(b.dataset.view).classList.remove('hidden');document.querySelectorAll('.bottom button').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+</script>
+
+<script>
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',(e)=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const b=document.getElementById('installAppBtn');
+  if(b)b.style.display='block';
+});
+document.addEventListener('click',async(e)=>{
+  if(e.target && e.target.id==='installAppBtn' && deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt=null;
+    e.target.style.display='none';
+  }
+});
+window.addEventListener('appinstalled',()=>{
+  const b=document.getElementById('installAppBtn');
+  if(b)b.style.display='none';
+});
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+
+
+<script>
+(async function(){
+  const HASH="5c9dbdf09f56bfd251b048c18d48303657881b7111322499af2813037c3a97a5";
+  const gate=document.getElementById('pinGate');
+  const input=document.getElementById('pinInput');
+  const btn=document.getElementById('pinSubmit');
+  const err=document.getElementById('pinError');
+  if(sessionStorage.getItem('japan2026_auth')==='1') {
+    gate.style.display='none';
+  }
+  async function sha256(s){
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  async function unlock(){
+    const v=(input.value||'').trim();
+    if(await sha256(v)===HASH){
+      sessionStorage.setItem('japan2026_auth','1');
+      gate.style.display='none';
+      err.textContent='';
+    } else {
+      err.textContent='קוד שגוי';
+      input.select();
+    }
+  }
+  btn.addEventListener('click',unlock);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+})();
+</script>
+
+</body></html>

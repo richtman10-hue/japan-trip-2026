@@ -1,0 +1,19 @@
+{
+  "name": "Japan 2026 – תמי, דני, דרורית וריצ׳י",
+  "short_name": "Japan 2026",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#176b63",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "japan_2026_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "./"
+}
