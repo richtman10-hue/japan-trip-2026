@@ -35,7 +35,7 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.head h1{font-size:19px} .sectionTitle h2{font-size:22px} .bottomNav button{min-width:86px;font-size:16px}}
 </style>
 </head>
-<body>
+<body data-build="V19">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div><div class="topstrip"><button id="installBtn" class="install" style="display:none">📲 הוסף למסך הבית</button></div></header>
@@ -83,7 +83,7 @@ function dayCard(d,i){
 function home(){
  const ti=getTripIndex(); const tripState=ti<0?'לפני הטיול':ti>=DAYS.length?'הטיול הסתיים':`יום ${ti+1} · ${DAYS[ti].date}`;
  const next=ti<0?DAYS[0]:(ti>=DAYS.length?DAYS[DAYS.length-1]:DAYS[ti]);
- return `<section class="hero"><h2>Good Friends · Great Journeys</h2><p>${tripState}</p><p><b>${next.icon} ${next.city}</b></p><div class="chips"><span class="chip">🇰🇷 סיאול</span><span class="chip">🇯🇵 יפן</span><span class="chip">🚗 רכב 8–15.11</span><span class="chip">🎫 הזמנות מרוכזות</span></div></section>
+ return `<section class="hero"><h2>שיהיה לנו טיול נפלא</h2><p>${tripState}</p><p><b>${next.icon} ${next.city}</b></p><div class="chips"><span class="chip">🇰🇷 סיאול</span><span class="chip">🇯🇵 יפן</span><span class="chip">🚗 רכב 8–15.11</span><span class="chip">🎫 הזמנות מרוכזות</span></div></section>
  ${title('🧭 מרכז שליטה','הכול במקום אחד','היום, הזמנות, ניווט, מסעדות, שפה וכלים.')}
  <div class="grid">
  <div class="card"><h3>☀️ היום שלי</h3><p>${ti<0?'הטיול מתחיל ב-31.10. בינתיים מומלץ לעבור על משימות ההכנה.':next.city}</p><button class="btn primary" onclick="switchTab('today')">פתח את היום</button></div>
@@ -201,7 +201,7 @@ renderNav();render();
 
 // PWA install
 let deferredPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').style.display='block'});document.getElementById('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').style.display='none'}};
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=19').then(r=>r.update()));
 </script>
 </body>
 </html>
