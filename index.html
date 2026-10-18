@@ -38,11 +38,11 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.fabSearch{left:12px;bottom:88px;width:52px;height:52px}.searchOverlay{padding:10px}.searchPanel{max-height:90vh}}
 </style>
 </head>
-<body data-build="V29">
+<body data-build="V30">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div></header>
-<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V29 · אתר רגיל ללא PWA</div>
+<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V30 · אתר רגיל ללא PWA</div>
 <nav class="bottomNav" id="nav"></nav>
 <button class="fabSearch" aria-label="חיפוש" title="חיפוש בכל האפליקציה" onclick="openSearch()">🔎</button>
 <div id="searchOverlay" class="searchOverlay" onclick="if(event.target===this)closeSearch()">
@@ -306,7 +306,7 @@ function reservations(){
 
  <h3 id="entry-docs" style="margin:22px 2px 10px">🛂 כניסה למדינות</h3>
  <div class="grid">
-  <div class="card"><h3>🇯🇵 יפן – Visit Japan Web</h3><div class="row"><b>✅ אריה – בוצע</b>QR להגירה ומכס נשמר פרטי/מקומי ואינו עולה ל-GitHub הציבורי.</div><div class="row"><b>✅ דרורית – בוצע</b>QR להגירה ומכס נשמר פרטי/מקומי ואינו עולה ל-GitHub הציבורי.</div><div class="btns"><a class="btn primary" target="_blank" rel="noopener" href="https://www.vjw.digital.go.jp/main/#/vjwpco001">🛂 Visit Japan Web</a></div></div>
+  <div class="card"><h3>🇯🇵 יפן – Visit Japan Web</h3><div class="row"><b>✅ בוצע</b>אישורי הכניסה ליפן הושלמו. פרטי נוסעים, מספרי דרכון ו-QR אינם מוצגים באפליקציה הציבורית.</div><div class="btns"><a class="btn primary" target="_blank" rel="noopener" href="https://www.vjw.digital.go.jp/main/#/vjwpco001">🛂 Visit Japan Web</a></div></div>
   <div class="card"><h3>🇰🇷 דרום קוריאה – e-Arrival Card</h3><div class="row"><b>⏳ טרם בוצע</b>למלא בתוך 72 השעות שלפני ההגעה לסיאול ב-1.11.</div><div class="btns"><a class="btn primary" target="_blank" rel="noopener" href="https://www.e-arrivalcard.go.kr/portal/apply/individual.do">🛂 פתח בקשה</a></div></div>
  </div>
 
@@ -398,7 +398,7 @@ function buildSearchIndex(){
  RECOMMENDATION_REMINDERS.forEach(r=>idx.push({title:r[2],detail:`${r[1]} · ${r[3]}`,tab:'web',icon:r[0]}));
  [
   ['e-Arrival Card דרום קוריאה','72 שעות לפני ההגעה לסיאול · אשרת/טופס כניסה','prep','🛂'],
-  ['Visit Japan Web','אישורי כניסה ליפן · אריה ודרורית בוצע','reserv','🛂'],
+  ['Visit Japan Web','אישורי כניסה ליפן · בוצע','reserv','🛂'],
   ['ETC Card','לבקש בעת איסוף הרכב','prep','🚗'],
   ['רישיון נהיגה בינלאומי','בוצע','prep','✅'],
   ['JNTO Japan Travel','טיפים רשמיים ליפן: אינטרנט, כסף, מזוודות, נימוסים וחירום','prep','🇯🇵'],
