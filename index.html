@@ -14,7 +14,7 @@ a{color:inherit} header{position:sticky;top:0;z-index:30;background:rgba(247,244
 .topstrip{max-width:1050px;margin:auto;padding:0 14px 10px} .install{width:100%;border:0;border-radius:12px;padding:11px;background:var(--accent);color:#fff;font-weight:800;font-size:15px}
 main{max-width:1050px;margin:auto;padding:14px 14px 98px}
 .hero{background:linear-gradient(135deg,#0d6f68,#184b61);color:#fff;border-radius:22px;padding:18px;box-shadow:0 12px 28px rgba(0,0,0,.08)}
-.hero h2{margin:0 0 7px;font-size:26px} .hero p{margin:5px 0;opacity:.92} .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px} .chip{background:rgba(255,255,255,.16);padding:6px 9px;border-radius:999px;font-weight:700;font-size:13px}
+.hero h2{margin:0 0 7px;font-size:26px} .hero p{margin:5px 0;opacity:.92} .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px} .chip{background:rgba(255,255,255,.16);padding:6px 9px;border-radius:999px;font-weight:700;font-size:13px;border:0;color:inherit;font-family:inherit}.chip.link{cursor:pointer}.chip.link:hover{background:rgba(255,255,255,.26)}
 .sectionTitle{margin:20px 0 10px} .sectionTitle small{color:var(--accent);font-weight:800} .sectionTitle h2{margin:3px 0;font-size:25px} .sectionTitle p{margin:0;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 5px 20px rgba(0,0,0,.035)} .card h3{margin:0 0 8px;font-size:18px}
@@ -32,11 +32,11 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.head h1{font-size:19px} .sectionTitle h2{font-size:22px} .bottomNav button{min-width:86px;font-size:16px}}
 </style>
 </head>
-<body data-build="V27">
+<body data-build="V28">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div></header>
-<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V27 · אתר רגיל ללא PWA</div>
+<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V28 · אתר רגיל ללא PWA</div>
 <nav class="bottomNav" id="nav"></nav>
 
 <script>
@@ -187,6 +187,7 @@ const hebInfo=q=>'https://www.google.com/search?hl=he&q='+encodeURIComponent(q+'
 const title=(e,t,d)=>`<div class="sectionTitle"><small>${e}</small><h2>${t}</h2><p>${d||''}</p></div>`;
 function renderNav(){nav.innerHTML=TABS.map(x=>`<button class="${tab===x[0]?'active':''}" onclick="switchTab('${x[0]}')"><span>${x[1]}</span>${x[2]}</button>`).join('')}
 function switchTab(t){tab=t;renderNav();render();window.scrollTo({top:0,behavior:'smooth'})}
+function openReservation(id){tab='reserv';renderNav();render();setTimeout(()=>{const el=document.getElementById(id); if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},60)}
 function weekdayHe(iso){
  const d=new Date(iso+'T12:00:00');
  const names=['יום ראשון','יום שני','יום שלישי','יום רביעי','יום חמישי','יום שישי','יום שבת'];
@@ -228,7 +229,7 @@ function home(){
  const ti=getTripIndex(); const tripState=ti<0?'לפני הטיול':ti>=DAYS.length?'הטיול הסתיים':`${weekdayHe(DAYS[ti].iso)} · ${DAYS[ti].date}`;
  const next=ti<0?DAYS[0]:(ti>=DAYS.length?DAYS[DAYS.length-1]:DAYS[ti]);
  const countdown=daysUntilTrip();
- return `<section class="hero"><h2>שיהיה לנו טיול נפלא</h2><p>${tripState}</p>${ti<0?`<p style="font-size:22px;font-weight:900;margin:10px 0">⏳ עוד ${countdown} ימים לטיול</p>`:''}<p><b>${next.icon} ${next.city}</b></p><div class="chips"><span class="chip">🇰🇷 סיאול</span><span class="chip">🇯🇵 יפן</span><span class="chip">🚗 רכב 8–15.11</span><span class="chip">🎫 הזמנות מרוכזות</span></div></section>
+ return `<section class="hero"><h2>שיהיה לנו טיול נפלא</h2><p>${tripState}</p>${ti<0?`<p style="font-size:22px;font-weight:900;margin:10px 0">⏳ עוד ${countdown} ימים לטיול</p>`:''}<p><b>✈️ <span dir="ltr" style="display:inline-block;unicode-bidi:isolate">חיפה → לרנקה → דובאי → סיאול → טוקיו</span></b></p><div class="chips"><button class="chip link" onclick="switchTab('today')">🇰🇷 סיאול</button><button class="chip link" onclick="switchTab('plan')">🇯🇵 יפן</button><button class="chip link" onclick="openReservation('car-booking')">🚗 רכב 8–15.11</button><button class="chip link" onclick="switchTab('reserv')">🎫 הזמנות מרוכזות</button></div></section>
  ${title('🧭 מרכז שליטה','הכול במקום אחד','היום, מפת היום, הזמנות, ניווט, מסעדות, שפה וכלים.')}
  <div class="grid">
  <div class="card"><h3>☀️ היום שלי</h3><p>${ti<0?'הטיול מתחיל ב-31.10. בינתיים מומלץ לעבור על משימות ההכנה.':next.city}</p><button class="btn primary" onclick="switchTab('today')">פתח את היום</button></div>
@@ -286,9 +287,9 @@ function reservations(){
  `<h3 style="margin:18px 2px 10px">🏨 אישורי מלונות</h3>
  <div class="grid">${hotelLinks.map(h=>`<div class="card"><div class="muted">${h[0]} · ${h[2]}</div><h3>🏨 ${h[1]}</h3><div class="row"><b>✅ אישור זמין</b>${h[4]}</div>${h[6]?`<a target="_blank" href="${h[6]}"><img src="${h[6]}" alt="אישור ${h[0]}" style="width:100%;max-height:300px;object-fit:contain;background:#fafafa;border:1px solid var(--line);border-radius:12px;margin-top:8px"></a>`:''}<div class="btns"><a class="btn primary" target="_blank" href="${h[3]}">📄 פתח אישור</a>${h[5]?`<a class="btn" target="_blank" href="${h[5]}">⬇️ מסמך Word</a>`:''}</div></div>`).join('')}</div>
 
- <h3 style="margin:22px 2px 10px">👥 הזמנות משותפות</h3>
+ <h3 id="shared-bookings" style="margin:22px 2px 10px">👥 הזמנות משותפות</h3>
  <div class="grid">
-  <div class="card"><h3>🚗 Toyota Rent a Car</h3><div class="row"><b>איסוף</b>8.11 · 10:00 · Haneda Airport (International Flights)</div><div class="row"><b>החזרה</b>15.11 · עד 20:00 · Sanjo Keihan-Kita, Kyoto</div><div class="row"><b>קטגוריה</b>W3 Class · Full Package · Automatic · English Nav</div><div class="row"><b>מחיר</b><span class="price">¥262,713 ≈ $1,682</span></div><div class="row"><b>טלפונים</b>Haneda: 03-5737-8100 · Kyoto: 075-762-0115</div><div class="btns"><a class="btn primary" target="_blank" href="toyota-car-reservation.pdf">📄 פתח הזמנת רכב</a></div></div>
+  <div class="card" id="car-booking"><h3>🚗 Toyota Rent a Car</h3><div class="row"><b>איסוף</b>8.11 · 10:00 · Haneda Airport (International Flights)</div><div class="row"><b>החזרה</b>15.11 · עד 20:00 · Sanjo Keihan-Kita, Kyoto</div><div class="row"><b>קטגוריה</b>W3 Class · Full Package · Automatic · English Nav</div><div class="row"><b>מחיר</b><span class="price">¥262,713 ≈ $1,682</span></div><div class="row"><b>טלפונים</b>Haneda: 03-5737-8100 · Kyoto: 075-762-0115</div><div class="btns"><a class="btn primary" target="_blank" href="toyota-car-reservation.pdf">📄 פתח הזמנת רכב</a></div></div>
   <div class="card"><h3>🚄 רכבות</h3><div class="row"><b>הזמנות יתווספו כאן</b>לאחר שנזמין את השינקנסן קיוטו → הירושימה ושאר מקטעי הרכבת הרלוונטיים.</div></div>
  </div>
 
@@ -335,8 +336,32 @@ function lang(){
  return title('🗣️ יפנית','משפטים שימושיים עם הקראה','לחץ על 🔊 כדי לשמוע הגייה יפנית מהמכשיר.')+
  `<div class="card"><table><thead><tr><th>עברית</th><th>יפנית</th><th>תעתיק</th><th>שמע</th></tr></thead><tbody>${JAPANESE.map(j=>`<tr><td><b>${j[0]}</b></td><td style="font-size:18px">${j[1]}</td><td>${j[2]}</td><td><button class="btn" onclick='speakJP(${JSON.stringify(j[1])})'>🔊</button></td></tr>`).join('')}</tbody></table></div>`;
 }
+
+const RECOMMENDATION_REMINDERS=[
+ ['🚗','10.11 · האקונה → מאצומוטו','Lake Kawaguchiko + Oishi Park','אפשרות בדרך לצאת מהאקונה לכיוון אגם קוואגוצ׳יקו ולעצור ב-Oishi Park לתצפית פתוחה לעבר האגם והר פוג׳י; מומלץ בעיקר ביום בהיר.','Oishi Park'],
+ ['🛣️','10.11 · חלופת דרך','Chuo Expressway → Ina IC / Iida IC → כביש 19','אם רוצים לשלב את עמק קיסו בדרך למאצומוטו, אפשר להמשיך בכביש Chuo Expressway ולרדת ב-Ina IC או Iida IC ומשם להתחבר לכביש 19; לבחור לפי הזמן ותנאי הדרך.','Kiso Valley'],
+ ['🏘️','10.11 · עמק קיסו','Tsumago-juku ו-Magome-juku','שתי עיירות הדואר המפורסמות של דרך Nakasendo; מתאימות לעצירה משמעותית יותר, עם חניה מסודרת מחוץ למרכזים ההיסטוריים.','Tsumago-juku'],
+ ['🏘️','10–11.11 · חלופה קרובה','Narai-juku','אם לא רוצים לרדת עמוק לעמק קיסו, Narai-juku היא עיירת שימור מרשימה ונוחה יותר לשילוב בגלל הקרבה היחסית למאצומוטו.','Narai-juku'],
+ ['🏯','10.11 · מאצומוטו','Matsumoto Castle – הטירה השחורה','אחת הטירות המקוריות החשובות ביפן, המזוהה עם החזית השחורה שלה; זהו יעד העדיפות במאצומוטו אם הזמן מתקצר.','Matsumoto Castle'],
+ ['🎨','10.11 · מאצומוטו','Matsumoto City Museum of Art','מוזיאון האמנות העירוני ובו יצירות המזוהות עם ילידת העיר Yayoi Kusama; מתאים כתוספת אם נשאר זמן.','Matsumoto City Museum of Art'],
+ ['🍲','10.11 · מאצומוטו','Ishii Miso','מבשלת מיסו מסורתית שבה אפשר ללמוד בקצרה על הייצור ולטעום מיסו או מרק מיסו; תוספת טובה אם שעות הפעילות מתאימות.','Ishii Miso'],
+ ['🌿','11.11 · סביבת מאצומוטו','Daio Wasabi Farm','חוות וואסבי גדולה באזור אזומינו עם שדות ותעלות מים; אם היום נינוח כדאי לשלב ולטעום גלידת וואסבי או סובה עם וואסבי.','Daio Wasabi Farm'],
+ ['🎋','17.11 · קיוטו','Arashiyama','אזור טבע ומקדשים במערב קיוטו, מפורסם בחורשת הבמבוק, Tenryu-ji וגשר Togetsukyo; כדאי להגיע מוקדם כדי להקדים את עומסי השלכת.','Arashiyama'],
+ ['🍁','18.11 · קיוטו','Eikando','מקדש הידוע במיוחד בצבעי השלכת; מתאים מאוד לביקור יום בתקופת הנסיעה שלנו.','Eikando'],
+ ['🧳','19.11 · קיוטו → הירושימה','Yamato מקיוטו לאוסקה','להעביר את המזוודות הגדולות ישירות למלון באוסקה ולצאת להירושימה עם תיק קטן בלבד; לצלם את תוויות המשלוח בשני טלפונים.','Yamato Transport Japan'],
+ ['🌊','20.11 · מיאג׳ימה','Miyajima לפי גאות ושפל','כדאי לבדוק ערב קודם את זמני הגאות והשפל, משום שהם משנים את המראה של שער הטוריאי ואת אופי הביקור ב-Itsukushima Shrine.','Itsukushima Shrine']
+];
+function recLink(key,label){
+ const site=ATTRACTION_SITES[key];
+ if(site)return `<a target="_blank" rel="noopener" href="${site}" style="text-decoration:underline;text-underline-offset:3px">${label}</a>`;
+ return `<a target="_blank" rel="noopener" href="${hebInfo(label)}" style="text-decoration:underline;text-underline-offset:3px">${label}</a>`;
+}
+function planBRecommendations(){
+ return Object.entries(EXTRA_ATTRACTIONS).map(([city,items])=>`<div class="card"><div class="muted">📍 ${city} · Plan B</div>${items.map(a=>`<div class="row"><b>${a[0]} ${recLink(a[1],a[1])} — ${a[2]}</b><div style="margin-top:4px;line-height:1.55">${a[3]}</div><div class="btns"><a class="btn" target="_blank" rel="noopener" href="${maps(a[4])}">🧭 מפה</a>${ATTRACTION_SITES[a[1]]?`<a class="btn" target="_blank" rel="noopener" href="${ATTRACTION_SITES[a[1]]}">🌐 מידע</a>`:''}</div></div>`).join('')}</div>`).join('');
+}
+
 function web(){
- return title('🌐 המלצות','דברים שכדאי לזכור','שילוב של תכנון, המלצות רשת והחומרים שכבר אספנו.')+`<div class="grid">${RECS.map(r=>`<div class="card"><div class="muted">${r[0]} · ${r[2]}</div><h3>${r[1]}</h3><p>${r[3]}</p></div>`).join('')}</div>`;
+ return title('🌐 המלצות','דברים שכדאי לזכור','שילוב של תכנון, המלצות רשת, Plan B והחומרים שכבר אספנו. כל שם מקום לחיץ לקבלת מידע נוסף.')+`<h3 style="margin:18px 2px 10px">⭐ תזכורות והמלצות מרכזיות</h3><div class="grid">${RECOMMENDATION_REMINDERS.map(r=>`<div class="card"><div class="muted">${r[0]} ${r[1]}</div><h3>${recLink(r[4],r[2])}</h3><p>${r[3]}</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="${maps(r[2])}">🧭 מפה</a>${ATTRACTION_SITES[r[4]]?`<a class="btn" target="_blank" rel="noopener" href="${ATTRACTION_SITES[r[4]]}">🌐 מידע</a>`:''}</div></div>`).join('')}</div><h3 style="margin:22px 2px 10px">🟡 כל אפשרויות Plan B לפי אזור</h3><div class="grid">${planBRecommendations()}</div>`;
 }
 function render(){
  const f={home,today,plan,prep,attr,reserv:reservations,tools,food,near,lang,web}[tab]; app.innerHTML=f(); if(tab==='tools'){fx();fxIls();fxYenIls();fxIlsYen();} if(tab==='today'||tab==='plan')centerSelectedDay();
