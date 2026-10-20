@@ -1,16 +1,12 @@
-# Japan 2026 V30
+# Japan 2026 V32
 
-עדכון V30 כולל:
-- חיפוש חופשי צף בכל האפליקציה עם תוצאות לחיצות.
-- 4.11: ערב ראשון בגינזה – Nissan Crossing, Wako, Uniqlo/GU, GINZA SIX ו-Itoya כ-Plan B.
-- 6.11: הפרדה בין Ueno Park לבין Ameyoko Market וקישורים באנגלית.
-- 7.11: שילוב Shinjuku בערב + Shinjuku Gyoen כ-Plan B.
-- מסמכי כניסה: Visit Japan Web מסומן בוצע לאריה ודרורית; e-Arrival Card לקוריאה לביצוע בתוך 72 שעות.
-- טיפים רשמיים מ-JNTO בהכנות לטיול.
-- QR אישיים של Visit Japan Web אינם כלולים בקבצי האתר הציבורי.
+עדכון V32 כולל:
+- 1.11: Myeong-dong Night Market / Shopping Street כ-Plan A לערב ההגעה.
+- 2.11: N Seoul Tower עבר ל-Plan A לקראת השקיעה; Cheonggyecheon הוא Plan B.
+- 3.11: Beauty Z → Gwangjang → COEX / Starfield Library → Bongeunsa → ערב בגאנגאם; DDP הוא Plan B בלבד.
+- מפות היום של 1–3.11 עודכנו בהתאם.
+- 19.11: משימת SmartEX מעודכנת – Kyoto → Hiroshima, החל מ-11:00, Nozomi ישירה, Ordinary Reserved Seat, טרם הוזמן.
+- נוספו תזכורות רלוונטיות בלשונית ההמלצות.
+- נשמרים כל עדכוני V30, כולל הגנת הפרטיות במסמכי הכניסה ליפן.
 
 הגרסה נשארת ללא PWA וללא Service Worker.
-
-
-## פרטיות
-פרטי נוסעים, מספרי דרכון ו-QR של Visit Japan Web אינם מוצגים באתר הציבורי. מוצג רק סטטוס כללי: אישורי הכניסה ליפן בוצעו.
