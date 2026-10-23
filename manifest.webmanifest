@@ -1,19 +1,17 @@
 {
-  "name": "Japan 2026 – Four Friends",
+  "name": "טיול יפן וקוריאה 2026",
   "short_name": "Japan 2026",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f7f4ed",
   "theme_color": "#0d6f68",
-  "lang": "he",
-  "dir": "rtl",
   "icons": [
     {
       "src": "japan_2026_logo.png",
-      "sizes": "512x512",
+      "sizes": "any",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
