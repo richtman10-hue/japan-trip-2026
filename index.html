@@ -38,11 +38,11 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.fabSearch{left:12px;bottom:88px;width:52px;height:52px}.searchOverlay{padding:10px}.searchPanel{max-height:90vh}}
 </style>
 </head>
-<body data-build="V33">
+<body data-build="V34">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div></header>
-<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V33 · אתר רגיל ללא PWA</div>
+<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V34 · אתר רגיל ללא PWA</div>
 <nav class="bottomNav" id="nav"></nav>
 <button class="fabSearch" aria-label="חיפוש" title="חיפוש בכל האפליקציה" onclick="openSearch()">🔎</button>
 <div id="searchOverlay" class="searchOverlay" onclick="if(event.target===this)closeSearch()">
@@ -437,7 +437,7 @@ function planBRecommendations(){
 }
 
 function web(){
- return title('🌐 המלצות','דברים שכדאי לזכור','שילוב של תכנון, המלצות רשת, Plan B והחומרים שכבר אספנו. כל שם מקום לחיץ לקבלת מידע נוסף.')+`<h3 style="margin:18px 2px 10px">⭐ תזכורות והמלצות מרכזיות</h3><div class="grid">${RECOMMENDATION_REMINDERS.map(r=>`<div class="card"><div class="muted">${r[0]} ${r[1]}</div><h3>${recLink(r[4],r[2])}</h3><p>${r[3]}</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="${maps(r[2])}">🧭 מפה</a>${(ATTRACTION_SITES[r[4]]||SHOPPING_LINKS[r[4]])?`<a class="btn" target="_blank" rel="noopener" href="${ATTRACTION_SITES[r[4]]||SHOPPING_LINKS[r[4]]}">🌐 מידע</a>`:''}</div></div>`).join('')}</div><h3 style="margin:22px 2px 10px">🟡 כל אפשרויות Plan B לפי אזור</h3><div class="grid">${planBRecommendations()}</div>`;
+ return title('🌐 המלצות','דברים שכדאי לזכור','שילוב של תכנון, המלצות רשת, Plan B והחומרים שכבר אספנו. כל שם מקום לחיץ לקבלת מידע נוסף.')+`<h3 style="margin:18px 2px 10px">⭐ תזכורות והמלצות מרכזיות</h3><div class="grid">${RECOMMENDATION_REMINDERS.map((r,i)=>`<div class="card" id="recommendation-${i}"><div class="muted">${r[0]} ${r[1]}</div><h3>${recLink(r[4],r[2])}</h3><p>${r[3]}</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="${maps(r[2])}">🧭 מפה</a>${(ATTRACTION_SITES[r[4]]||SHOPPING_LINKS[r[4]])?`<a class="btn" target="_blank" rel="noopener" href="${ATTRACTION_SITES[r[4]]||SHOPPING_LINKS[r[4]]}">🌐 מידע</a>`:''}</div></div>`).join('')}</div><h3 style="margin:22px 2px 10px">🟡 כל אפשרויות Plan B לפי אזור</h3><div class="grid">${planBRecommendations()}</div>`;
 }
 function normalizeSearch(s){return String(s||'').toLowerCase().replace(/[״׳'".,:;()\[\]\/\\-]/g,' ').replace(/\s+/g,' ').trim()}
 function buildSearchIndex(){
@@ -448,7 +448,7 @@ function buildSearchIndex(){
  HOTEL_CONFIRMATIONS.forEach(h=>idx.push({title:h[1],detail:`מלון ${h[0]} · ${h[2]} · ${h[3]} · ${h[4]}`,tab:'reserv',icon:'🏨'}));
  FOODS.forEach(f=>idx.push({title:f[1],detail:`${f[0]} · ${f[2]} · ${f[3]}`,tab:'food',icon:'🍽️'}));
  Object.entries(FOOD_WISHLIST).forEach(([city,items])=>items.forEach(x=>idx.push({title:x[0],detail:`${city} · ${x[1]}`,tab:'food',icon:'🍴'})));
- RECOMMENDATION_REMINDERS.forEach(r=>idx.push({title:r[2],detail:`${r[1]} · ${r[3]}`,tab:'web',icon:r[0]}));
+ RECOMMENDATION_REMINDERS.forEach((r,i)=>idx.push({title:r[2],detail:`${r[1]} · ${r[3]}`,tab:'web',anchor:`recommendation-${i}`,icon:r[0]}));
  [
   ['e-Arrival Card דרום קוריאה','72 שעות לפני ההגעה לסיאול · אשרת/טופס כניסה','prep','🛂'],
   ['Visit Japan Web','אישורי כניסה ליפן · בוצע','reserv','🛂'],
@@ -470,9 +470,9 @@ function performSearch(q){
  if(!nq){box.innerHTML='<div class="card"><p>הקלד מילה או שם מקום. החיפוש עובר על כל הימים, האטרקציות, ההמלצות, האוכל, ההזמנות וההכנות.</p></div>';return}
  const words=nq.split(' ').filter(Boolean);
  const res=SEARCH_INDEX.filter(x=>words.every(w=>x._search.includes(w))).slice(0,40);
- box.innerHTML=res.length?res.map(x=>`<div class="card searchResult" onclick="goSearch('${x.tab}',${Number.isInteger(x.day)?x.day:'null'})"><div class="muted">${x.icon||'🔎'} ${x.tab==='today'?'היום שלי':x.tab==='attr'?'אטרקציות':x.tab==='reserv'?'הזמנות':x.tab==='food'?'אוכל':x.tab==='web'?'המלצות':x.tab==='prep'?'הכנות':'מידע'}</div><h3>${x.title}</h3><p>${x.detail}</p></div>`).join(''):'<div class="card"><h3>לא נמצאו תוצאות</h3><p>נסה מילה קצרה יותר או שם באנגלית/עברית.</p></div>';
+ box.innerHTML=res.length?res.map(x=>`<div class="card searchResult" onclick="goSearch('${x.tab}',${Number.isInteger(x.day)?x.day:'null'},'${x.anchor||''}')"><div class="muted">${x.icon||'🔎'} ${x.tab==='today'?'היום שלי':x.tab==='attr'?'אטרקציות':x.tab==='reserv'?'הזמנות':x.tab==='food'?'אוכל':x.tab==='web'?'המלצות':x.tab==='prep'?'הכנות':'מידע'}</div><h3><a href="#" onclick="event.preventDefault();event.stopPropagation();goSearch('${x.tab}',${Number.isInteger(x.day)?x.day:'null'},'${x.anchor||''}')">${x.title}</a></h3><p>${x.detail}</p></div>`).join(''):'<div class="card"><h3>לא נמצאו תוצאות</h3><p>נסה מילה קצרה יותר או שם באנגלית/עברית.</p></div>';
 }
-function goSearch(targetTab,day){if(day!==null&&day!==undefined)selectedDay=day;closeSearch();switchTab(targetTab);window.scrollTo({top:0,behavior:'smooth'})}
+function goSearch(targetTab,day,anchor){if(day!==null&&day!==undefined)selectedDay=day;closeSearch();switchTab(targetTab);if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},100)}else{window.scrollTo({top:0,behavior:'smooth'})}}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch()});
 
 function render(){
