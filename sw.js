@@ -1,4 +1,4 @@
-const CACHE='japan-2026-v48-offline';
+const CACHE='japan-2026-v49-offline';
 const CORE=['./','./index.html','./manifest.webmanifest'];
 const ASSETS=["./index.html", "./manifest.webmanifest", "./japan_2026_logo.png", "./hakone-booking-new.png", "./osaka-booking-new.png", "./seoul-hotel.pdf", "./tokyo-hotel.pdf", "./hakone-hotel.pdf", "./matsumoto-hotel.pdf", "./takayama-hotel.pdf", "./kanazawa-hotel.pdf", "./kyoto-hotel.pdf", "./hiroshima-hotel.pdf", "./osaka-hotel.pdf", "./toyota-car-reservation.pdf", "./seoul-airport-chauffeur.pdf", "./osaka-airport-chauffeur.pdf"];
 self.addEventListener('install',event=>{
