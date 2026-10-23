@@ -1,12 +1,12 @@
-# Japan 2026 V32
+# Japan 2026 V33
 
-עדכון V32 כולל:
-- 1.11: Myeong-dong Night Market / Shopping Street כ-Plan A לערב ההגעה.
-- 2.11: N Seoul Tower עבר ל-Plan A לקראת השקיעה; Cheonggyecheon הוא Plan B.
-- 3.11: Beauty Z → Gwangjang → COEX / Starfield Library → Bongeunsa → ערב בגאנגאם; DDP הוא Plan B בלבד.
-- מפות היום של 1–3.11 עודכנו בהתאם.
-- 19.11: משימת SmartEX מעודכנת – Kyoto → Hiroshima, החל מ-11:00, Nozomi ישירה, Ordinary Reserved Seat, טרם הוזמן.
-- נוספו תזכורות רלוונטיות בלשונית ההמלצות.
-- נשמרים כל עדכוני V30, כולל הגנת הפרטיות במסמכי הכניסה ליפן.
+עדכון V33 כולל:
+- אישורי Booking חדשים להאקונה ולאוסקה: הוחלפו קובצי ה-PDF ותצוגות התמונה; המחירים מוצגים בכרטיסי ההזמנה.
+- שינקנסן Kyoto → Hiroshima מסומן כהוזמן: NOZOMI 63, יציאה 11:02, הגעה 12:42, קרון 5, מושבים 8D, 8E, 9D, 9E. קודי QR אינם כלולים באתר הציבורי.
+- נוספה משימה להזמנת רכבת Hiroshima → Shin-Osaka ל-21.11.
+- בכלים נוסף ממיר KRW ↔ ILS/USD עם אפשרות לרענן שערים.
+- בהכנות נוספו Airalo eSIM 20GB, הורדת Global Blue, קניות JINS, סכין Santoku עם אבן ושבלונת השחזה, מסכות פנים ב-Don Quijote, טרולי MUJI באוסקה, נעליים Onitsuka Tiger / ABC-MART, Bic Camera, Galaxy Harajuku / teamLab לבדיקה, ותזכורת להנחת Senior 65+ באתרים בתשלום.
+- תזכורות Senior מוצגות בימים שבהם מתוכננים אתרים בתשלום.
+- נשמרו כל העדכונים הקודמים, כולל חיפוש צף, מפות יומיות, תוכנית סיאול והמלצות Plan B.
 
-הגרסה נשארת ללא PWA וללא Service Worker.
+הגרסה נשארת אתר רגיל ללא PWA וללא Service Worker.
