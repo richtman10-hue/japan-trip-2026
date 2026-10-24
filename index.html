@@ -39,11 +39,11 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.fabSearch{left:12px;bottom:88px;width:52px;height:52px}.searchOverlay{padding:10px}.searchPanel{max-height:90vh}}
 </style>
 </head>
-<body data-build="V49">
+<body data-build="V50">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div></header>
-<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V49 · מידע היסטורי · מפת יפן 26 · אופליין</div>
+<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V50 · מדריך למשתמש · מידע היסטורי · אופליין</div>
 <nav class="bottomNav" id="nav"></nav>
 <button class="fabSearch" aria-label="חיפוש" title="חיפוש בכל האפליקציה" onclick="openSearch()">🔎</button>
 <div id="searchOverlay" class="searchOverlay" onclick="if(event.target===this)closeSearch()">
@@ -151,7 +151,7 @@ function explainPlan(p){
 }
 const HOTEL_CONFIRMATIONS=[["סיאול", "Aloft by Marriott Seoul Myeongdong", "1–4.11", "✅ אישור Booking התקבל", "Aloft Room, 1 King · ארוחת בוקר"], ["טוקיו", "Mitsui Garden Hotel Ginza-gochome", "4–8.11", "✅ אישור Booking התקבל", "Superior Twin Room · ארוחת בוקר"], ["האקונה", "Hakone Ashinoko Hanaori", "8–10.11", "✅ אישור Booking התקבל", "Casual Twin Room with Open-Air Bath · בוקר + ערב"], ["מאצומוטו", "Onyado Nono Matsumoto Natural Hot Spring", "10–11.11", "✅ אישור Booking התקבל", "Queen Room · ארוחת בוקר"], ["טאקיאמה", "Takayama Green Hotel", "11–13.11", "✅ אישור Booking התקבל", "Standard Twin Room · ארוחת בוקר"], ["קאנאזאווה", "Onyado Nono Kanazawa", "13–15.11", "✅ אישור Booking התקבל", "Moderate Twin Room · ארוחת בוקר"], ["קיוטו", "GOOD NATURE HOTEL KYOTO", "15–19.11", "✅ אישור Booking התקבל", "Superior Twin Room · ארוחת בוקר"], ["הירושימה", "THE KNOT HIROSHIMA", "19–21.11", "✅ אישור Booking התקבל", "Standard Twin Room · ארוחת בוקר"], ["אוסקה", "The Royal Park Hotel Iconic Osaka Midosuji", "21–23.11", "✅ אישור Booking התקבל", "Standard Twin Room · ארוחת בוקר"]];
 const TABS=[
-['home','🏠','בית'],['today','☀️','היום'],['plan','🗓️','תכנון'],['prep','🧳','הכנות'],['attr','🏯','אטרקציות'],['reserv','🎫','הזמנות'],['tools','🧰','כלים'],['food','🍜','אוכל'],['near','📍','סביבי'],['lang','🗣️','יפנית'],['web','🌐','המלצות'],['history','📜','מידע היסטורי']
+['home','🏠','בית'],['today','☀️','היום'],['plan','🗓️','תכנון'],['prep','🧳','הכנות'],['attr','🏯','אטרקציות'],['reserv','🎫','הזמנות'],['tools','🧰','כלים'],['food','🍜','אוכל'],['near','📍','סביבי'],['lang','🗣️','יפנית'],['web','🌐','המלצות'],['history','📜','מידע היסטורי'],['help','📖','עזרה']
 ];
 let tab='home', selectedDay=0;
 const app=document.getElementById('app'),nav=document.getElementById('nav');
@@ -590,8 +590,24 @@ function history(){
  return `<div class="card"><h2>📜 מידע היסטורי</h2><p>רקע תמציתי לאתרים לפי ימי הטיול. ״חלופה״ מציין אתר שאינו חלק מחייב מהמסלול. כל המידע שמור בתוך האפליקציה וזמין גם ללא אינטרנט.</p></div>`+groups.map(g=>`<div class="card"><h3>${g.key}</h3>${g.items.map(e=>`<div class="row"><b>${e.name}${e.status==='חלופה'?' · 🟡 חלופה':''}</b><p>${e.text}</p></div>`).join('')}</div>`).join('');
 }
 
+
+function help(){
+ const sections=[
+ ['1. מהי האפליקציה?','זהו מדריך הטיול המשותף שלנו ליפן ולקוריאה. במקום אחד נמצאים ימי הטיול, מסלולים, אטרקציות, מסעדות, אישורי הזמנות ומידע שימושי.'],
+ ['2. איך פותחים ומתקינים?','פותחים בטלפון את הקישור לאפליקציה: https://richtman10-hue.github.io/japan-trip-2026/ . באנדרואיד: Chrome ← תפריט ⋮ ← הוספה למסך הבית / התקנת אפליקציה. באייפון: Safari ← שיתוף ← הוסף למסך הבית. אפשר גם להשתמש דרך הדפדפן בלי להתקין.'],
+ ['3. מאיפה מתחילים בכל בוקר?','לוחצים על ☀️ היום, בוחרים את התאריך אם צריך, ורואים את התוכנית, נקודות העצירה והאפשרויות להמשך. בלשונית 🗓️ תכנון אפשר לראות מראש את כל ימי הטיול.'],
+ ['4. איך מנווטים?','בתוכנית היום לוחצים על כפתור ניווט המסלול, או על הקישור למפת יפן 26. Google Maps נפתח בנפרד; ניווט חי ומפות מקוונות דורשים חיבור לאינטרנט. כדאי להוריד מראש מפות לא מקוונות של אזורי הטיול.'],
+ ['5. איפה ההזמנות?','בלשונית 🎫 הזמנות אפשר לפתוח אישורי מלונות, טיסות והסעות השמורים באפליקציה. רצוי לפתוח כל אישור פעם אחת כשהטלפון מחובר לאינטרנט, ואז לבדוק שהוא זמין גם במצב טיסה.'],
+ ['6. איך מכירים את האתרים?','בלשונית 🏯 אטרקציות רואים הצעות ומידע מעשי; בלשונית 📜 מידע היסטורי מופיעות סקירות קצרות על האתרים, מסודרות לפי יום ועיר.'],
+ ['7. אוכל, כלים ושפה','בלשוניות 🍜 אוכל, 🧰 כלים ו-🗣️ יפנית נמצאים רעיונות למסעדות, מידע שימושי וביטויים. חיפוש באפליקציה יכול לעזור למצוא מקום במהירות.'],
+ ['8. מה עובד בלי אינטרנט?','לאחר פתיחה מקוונת וטעינת התוכן, רוב מסכי האפליקציה, התוכנית והמידע ההיסטורי זמינים ללא אינטרנט. שירותים חיצוניים כגון Google Maps, שערים חיים ואתרי אינטרנט דורשים רשת; זמינות מסמכי הזמנות תלויה בכך שנטענו מראש.'],
+ ['9. בדיקה לפני היציאה','פותחים את האפליקציה עם Wi-Fi, נכנסים ליום טיול ולהזמנה אחת לפחות, סוגרים את האפליקציה, מפעילים מצב טיסה ובודקים ששניהם נפתחים. במקרה של תקלה חוזרים לאינטרנט ומרעננים.']
+ ];
+ return `<div class="card"><h2>📖 עזרה / מדריך למשתמש</h2><p>מדריך קצר לחברי הקבוצה. אפשר לקרוא אותו גם ללא אינטרנט לאחר עדכון האפליקציה.</p><div class="btns"><a class="btn primary" href="https://richtman10-hue.github.io/japan-trip-2026/" target="_blank" rel="noopener">🔗 קישור לאפליקציה</a></div></div>`+sections.map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
+}
+
 function render(){
- const f={home,today,plan,prep,attr,reserv:reservations,tools,food,near,lang,web,history}[tab]; app.innerHTML=f(); if(tab==='reserv')organizeReservations(); if(tab==='tools'){fx();fxIls();fxYenIls();fxIlsYen();fxKrw();} if(tab==='today'||tab==='plan')centerSelectedDay();
+ const f={home,today,plan,prep,attr,reserv:reservations,tools,food,near,lang,web,history,help}[tab]; app.innerHTML=f(); if(tab==='reserv')organizeReservations(); if(tab==='tools'){fx();fxIls();fxYenIls();fxIlsYen();fxKrw();} if(tab==='today'||tab==='plan')centerSelectedDay();
 }
 
 function fxYenIls(){const y=Number(document.getElementById('yenils')?.value||0),r=Number(document.getElementById('yenilsrate')?.value||0);const o=document.getElementById('yenilsout');if(o)o.textContent='₪'+(y*r).toFixed(2);fxIlsYen()}
@@ -625,7 +641,7 @@ window.addEventListener('load', async () => {
     try {
       const reg=await navigator.serviceWorker.register('./sw.js',{scope:'./'});
       await navigator.serviceWorker.ready;
-      console.info('V49 offline service worker active',reg.scope);
+      console.info('V50 offline service worker active',reg.scope);
     } catch(err) { console.warn('Offline installation unavailable',err); }
   }
 });
