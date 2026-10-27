@@ -1,14 +1,9 @@
-# Japan–Korea 2026 — V51
+# Japan trip V52 — Weather & Clothing
 
-## עדכון המלצות לוטוס הזהב
-נוספו אפשרויות והמלצות לימים 5, 9, 14, 16, 18, 19, 20, 21, 22, 23 בנובמבר.
-כל ההמלצות החדשות מוגדרות כאפשרויות/Plan B או טיפים; אין שינוי במועדי טיסות, מלונות, הסעות, הזמנות או סדר האתרים המאושר.
-נוספו הסברים היסטוריים לאתרים חדשים במקטע המידע ההיסטורי.
-עודכן מטמון אופליין ל-V51.
+Upload `index.html` and `sw.js` to the repository root, replacing only these two files. Keep all other files unchanged.
 
-## התקנה
-העלו את שלושת הקבצים index.html, sw.js, README.md לשורש מאגר GitHub הקיים והחליפו רק את הקבצים האלה. אל תמחקו מסמכים, תיקיות או קבצים אחרים.
-אם V50 טרם הועלה, V51 מבוסס עליו וכולל גם את מדריך המשתמש שלו.
-לאחר פרסום: רעננו את האפליקציה כשהטלפון מחובר לאינטרנט; בדקו טעינה אופליין ואישור אחד.
+Added weather tab with 16-day live forecasts via Open-Meteo, rain/wind/cold advisories and packing/Plan B suggestions for each day. Existing itinerary, hotels, bookings and documents are unchanged.
 
-מקור רעיונות: golden-lotus.co.il. יש לאמת שעות פתיחה, מחירים והזמנות סמוך לביקור.
+IMPORTANT: This static GitHub Pages release does NOT provide server-sent push notifications while the PWA is closed. A separate scheduled push sender or ChatGPT reminder must be configured. The button only requests notification permission.
+
+Weather requires network. Open-Meteo is a third-party weather API. Check official operator notices for cable cars, ferries and road closures.
