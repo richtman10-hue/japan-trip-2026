@@ -39,11 +39,11 @@ table{width:100%;border-collapse:collapse} td,th{padding:9px;border-bottom:1px s
 @media(max-width:650px){.fabSearch{left:12px;bottom:88px;width:52px;height:52px}.searchOverlay{padding:10px}.searchPanel{max-height:90vh}}
 </style>
 </head>
-<body data-build="V53">
+<body data-build="V53.1">
 </div>
 
 <header><div class="head"><img class="logo" src="japan_2026_logo.png"><div><h1>טיול יפן 2026</h1><p>תמי · דני · דרורית · ריצ׳י · 31.10–24.11</p></div></div></header>
-<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V53 · טיסות מעודכנות · מזג אוויר · אופליין</div>
+<main><div id="app"></div></main><div style="text-align:center;color:#8a8a8a;font-size:11px;padding:4px 0 82px">גרסה V53.1 · טיסות מעודכנות · מזג אוויר · אופליין</div>
 <nav class="bottomNav" id="nav"></nav>
 <button class="fabSearch" aria-label="חיפוש" title="חיפוש בכל האפליקציה" onclick="openSearch()">🔎</button>
 <div id="searchOverlay" class="searchOverlay" onclick="if(event.target===this)closeSearch()">
@@ -320,7 +320,7 @@ function home(){
  </div>`;
 }
 function today(){
- let i=getTripIndex(); if(i<0)i=selectedDay; else if(i>=DAYS.length)i=DAYS.length-1; else selectedDay=i;
+ if(!Number.isInteger(selectedDay)||selectedDay<0||selectedDay>=DAYS.length){const i=getTripIndex();selectedDay=Math.max(0,Math.min(DAYS.length-1,i));}
  return title('☀️ היום שלי',`${weekdayHe(DAYS[selectedDay].iso)} · ${DAYS[selectedDay].date}`,'התוכנית המרכזית, דגשים, ניווט ומידע שימושי.')+dayStrip()+dayCard(DAYS[selectedDay],selectedDay);
 }
 function plan(){
